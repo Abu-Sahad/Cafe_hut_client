@@ -61,12 +61,10 @@ const Login = () => {
                                         </div>
 
                                         <Button className="mb-4 w-100" size="lg" style={{ backgroundColor: '#3b5998' }}>
-                                            {/* <MDBIcon fab icon="facebook-f" className="mx-2" /> */}
                                             Continue with Google
                                         </Button>
 
                                         <Button className="mb-4 w-100" size="lg" style={{ backgroundColor: '#55acee' }}>
-                                            {/* <MDBIcon fab icon="twitter" className="mx-2" /> */}
                                             Continue with Github
                                         </Button>
                                     </div>
