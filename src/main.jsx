@@ -12,6 +12,7 @@ import Login from './shared/Login/Login';
 import Registration from './shared/Registration/Registration';
 import ChefDetailsLayout from './Layout/ChefDetailsLayout';
 import SingleChefDetails from './pages/SingleChefDeatils/SingleChefDetails';
+import AuthProviders from './Provides/AuthProviders';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,19 +35,21 @@ const router = createBrowserRouter([
 
   {
     path: 'chefCategories',
-    element:<ChefDetailsLayout></ChefDetailsLayout>,
+    element: <ChefDetailsLayout></ChefDetailsLayout>,
     children: [
-        {
-            path: ':id',
-            element: <SingleChefDetails></SingleChefDetails>,
-             loader: ({params}) => fetch(`http://127.0.0.1:5000/chefCategories/${params.id}`)
-        }
+      {
+        path: ':id',
+        element: <SingleChefDetails></SingleChefDetails>,
+        loader: ({ params }) => fetch(`http://127.0.0.1:5000/chefCategories/${params.id}`)
+      }
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProviders>
+      <RouterProvider router={router} />
+    </AuthProviders>
   </React.StrictMode>,
 )

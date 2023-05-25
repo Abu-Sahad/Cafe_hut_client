@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provides/AuthProviders";
 
 const Header = () => {
+  const {displayName,photoURL}=useContext(AuthContext)
   return (
     <div className="container">
       <Navbar collapseOnSelect expand="lg" bg="white" variant="white">
