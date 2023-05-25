@@ -7,15 +7,15 @@ const ShapeDetail = ({ category }) => {
     return (
         <div>
             <Col>
-                <Card>
-                    <Card.Img variant="top" src={category.chef_picture} />
+                <Card className="shadow-lg p-3 mb-5 bg-white rounded">
+                    <Card.Img className="rounded" variant="top" src={category.chef_picture} />
                     <Card.Body>
                         <Card.Title>Chef Name: {category.chef_name}</Card.Title>
                         <Card.Text> Experience: {category.years_of_experience}</Card.Text>
                         <Card.Text>Recipes: {category.number_of_recipes}</Card.Text>
                         <Card.Text> Likes: {category.like}</Card.Text>
                     </Card.Body>
-                    <Link><Button className="ms-3 mb-3" variant="secondary">View Recipe Button</Button></Link>
+                    <Link  to={`/chefCategories/${category.id}`}><Button className="ms-3 mb-3" variant="secondary">View Recipe Button</Button></Link>
                 </Card>
             </Col>
         </div>

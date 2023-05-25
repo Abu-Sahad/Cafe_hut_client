@@ -10,6 +10,8 @@ import LoginLayout from './Layout/LoginLayout.jsx';
 import Main from './Layout/Main.jsx';
 import Login from './shared/Login/Login';
 import Registration from './shared/Registration/Registration';
+import ChefDetailsLayout from './Layout/ChefDetailsLayout';
+import SingleChefDetails from './pages/SingleChefDeatils/SingleChefDetails';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,17 +32,17 @@ const router = createBrowserRouter([
     ],
   },
 
-  // {
-  //   path: 'category',
-  //   element: <Main></Main>,
-  //   children: [
-  //       {
-  //           path: ':id',
-  //           element: <Category></Category>,
-  //           loader: ({params}) => fetch(`https://the-news-dragon-server-jhankarphero.vercel.app/categories/${params.id}`)
-  //       }
-  //   ]
-  // },
+  {
+    path: 'chefCategories',
+    element:<ChefDetailsLayout></ChefDetailsLayout>,
+    children: [
+        {
+            path: ':id',
+            element: <SingleChefDetails></SingleChefDetails>,
+             loader: ({params}) => fetch(`http://127.0.0.1:5000/chefCategories/${params.id}`)
+        }
+    ]
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
