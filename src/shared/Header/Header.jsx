@@ -6,7 +6,7 @@ const Header = () => {
     <div className="container">
       <Navbar collapseOnSelect expand="lg" bg="white" variant="white">
         <Container>
-          <Navbar.Brand href="#home">Chef Hut</Navbar.Brand>
+          <Navbar.Brand className="fw-bold mb-2 text-uppercase" href="#home">Chef Hut</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
@@ -16,10 +16,7 @@ const Header = () => {
 
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Dank memes
-              </Nav.Link>
+              <Link style={{ color: 'black', textDecoration: 'none' }} to='/login'>LogIn</Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
