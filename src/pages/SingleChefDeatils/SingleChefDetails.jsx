@@ -9,10 +9,10 @@ const SingleChefDetails = () => {
     return (
         <div className="container">
 
-            <Card className="mb-5 h-25">
-                <Card.Img variant="top" src={chef_picture} alt="Chef Picture" />
+            <Card className="mb-5 h-25 mx-auto" style={{ height: '500px', width: '600px' }}>
+                <Card.Img variant="top" style={{ height: '300px', width: '600px' }} src={chef_picture} alt="Chef Picture" />
                 <Card.Body>
-                    <Card.Title>{chef_name}</Card.Title>
+                    <Card.Title className="text-center">{chef_name}</Card.Title>
                     <Card.Text>{description}</Card.Text>
                     <Container>
                         <Row>
@@ -40,7 +40,7 @@ const SingleChefDetails = () => {
                 }
             </Row>
 
-        </div>
+        </div >
     );
 };
 

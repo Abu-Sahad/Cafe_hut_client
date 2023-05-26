@@ -2,13 +2,14 @@ import { Carousel } from "react-bootstrap";
 import banner_1 from "../../assets/bannerimage-1.jpg"
 import banner_2 from "../../assets/bannerimage-2.jpg"
 import banner_3 from "../../assets/bannerimage-3.jpg"
+import './ChefBanner.css'
 const ChefBanner = () => {
     return (
         <div className="container mb-5">
             <Carousel fade>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100 rounded"
+                        className="d-block w-100 rounded custom-carousel-image"
                         src={banner_1}
                         alt="First slide"
                     />
@@ -19,7 +20,7 @@ const ChefBanner = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100 rounded"
+                        className="d-block w-100 rounded custom-carousel-image"
                         src={banner_2}
                         alt="Second slide"
                     />
@@ -33,7 +34,7 @@ const ChefBanner = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100 rounded"
+                        className="d-block w-100 rounded custom-carousel-image"
                         src={banner_3}
                         alt="Third slide"
                     />

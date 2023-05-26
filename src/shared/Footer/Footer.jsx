@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 
 const Footer = () => {
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -31,7 +31,7 @@ const Footer = () => {
                     <div className="col-md-3 mb-md-0 mb-3">
                         <h5 className="text-uppercase text-white">Links</h5>
                         <ul className="list-unstyled">
-                        <li><a className='text-white' href="#!">Link 1</a></li>
+                            <li><a className='text-white' href="#!">Link 1</a></li>
                             <li><a className='text-white' href="#!">Link 2</a></li>
                             <li><a className='text-white' href="#!">Link 3</a></li>
                             <li><a className='text-white' href="#!">Link 4</a></li>

@@ -7,7 +7,7 @@ const ShapeDetail = ({ category }) => {
         <div>
             <Col>
                 <Card className="shadow-lg p-3 mb-5 bg-white rounded">
-                    <Card.Img className="rounded" variant="top" src={category.chef_picture} />
+                    <Card.Img className="rounded" style={{ height: '200px' }} variant="top" src={category.chef_picture} />
                     <Card.Body>
                         <Card.Title>Chef Name: {category.chef_name}</Card.Title>
                         <Card.Text> Experience: {category.years_of_experience}</Card.Text>
