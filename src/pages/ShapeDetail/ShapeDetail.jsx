@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const ShapeDetail = ({ category }) => {
     const { chef_name, chef_picture, description, number_of_recipes, like, years_of_experience } = category
-    console.log(category)
     return (
         <div>
             <Col>
@@ -15,7 +14,7 @@ const ShapeDetail = ({ category }) => {
                         <Card.Text>Recipes: {category.number_of_recipes}</Card.Text>
                         <Card.Text> Likes: {category.like}</Card.Text>
                     </Card.Body>
-                    <Link  to={`/chefCategories/${category.id}`}><Button className="ms-3 mb-3" variant="secondary">View Recipe Button</Button></Link>
+                    <Link to={`/chefCategories/${category.id}`}><Button className="ms-3 mb-3" variant="secondary">View Recipe Button</Button></Link>
                 </Card>
             </Col>
         </div>

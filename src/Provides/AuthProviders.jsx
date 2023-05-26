@@ -1,10 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app)
+const googleProvider = new GoogleAuthProvider()
+const gitProvider=new GithubAuthProvider()
 
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -28,9 +30,17 @@ const AuthProviders = ({ children }) => {
         });
     };
     //name part end
+
+    const googleSignIn = () => {
+        return signInWithPopup(auth, googleProvider)
+    }
+
+    const gitSignIn=()=>{
+        return signInWithPopup(auth,gitProvider)
+    }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
-            console.log('logged in user inside auth state observer', loggedUser)
+            //console.log('logged in user inside auth state observer', loggedUser)
             setUser(loggedUser);
             setLoading(false);
         })
@@ -46,7 +56,9 @@ const AuthProviders = ({ children }) => {
         createUser,
         updateProfile1,
         signIn,
-        logOut
+        logOut,
+        googleSignIn,
+        gitSignIn
     }
 
     return (

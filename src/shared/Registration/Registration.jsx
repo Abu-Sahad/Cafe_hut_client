@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provides/AuthProviders";
 
 const Registration = () => {
-    const {user, createUser,updateProfile1 } = useContext(AuthContext)
-    console.log(createUser)
+    const { user, createUser, updateProfile1 } = useContext(AuthContext)
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -14,24 +13,24 @@ const Registration = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, photo, email, password);
-        
-        createUser(email, password)
-        .then(result => {
-            updateProfile1(name,photo)
-                .then(() => {
-                    console.log("Profile updated successfully");
-                })
-                .catch((error) => {
-                    console.error("Error updating profile:", error);
-                });
 
-            const loggedUser = result.user
-            console.log(loggedUser)
-            form.reset();
-        })
-        .catch(error => {
-            console.log(error.message)
-        })
+        createUser(email, password)
+            .then(result => {
+                updateProfile1(name, photo)
+                    .then(() => {
+                        console.log("Profile updated successfully");
+                    })
+                    .catch((error) => {
+                        console.error("Error updating profile:", error);
+                    });
+
+                const loggedUser = result.user
+                console.log(loggedUser)
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     };
     return (
         <Container>
@@ -100,19 +99,6 @@ const Registration = () => {
                                             Al ready have an account?{" "}
                                             <Link to="/login">Login</Link>
                                         </p>
-                                        <div className="my-4">
-                                            <p className="text-center fw-bold mx-3 mb-0">OR</p>
-                                        </div>
-
-                                        <Button className="mb-4 w-100" size="lg" style={{ backgroundColor: '#3b5998' }}>
-                                            {/* <MDBIcon fab icon="facebook-f" className="mx-2" /> */}
-                                            Continue with Google
-                                        </Button>
-
-                                        <Button className="mb-4 w-100" size="lg" style={{ backgroundColor: '#55acee' }}>
-                                            {/* <MDBIcon fab icon="twitter" className="mx-2" /> */}
-                                            Continue with Github
-                                        </Button>
                                     </div>
                                 </div>
                             </div>

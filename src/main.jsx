@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: ':id',
         element: <SingleChefDetails></SingleChefDetails>,
-        loader: ({ params }) => fetch(`http://127.0.0.1:5000/chefCategories/${params.id}`)
+        loader: ({ params }) => fetch(`https://chef-hut-abu-sahad.vercel.app/chefCategories/${params.id}`)
       }
     ]
   },

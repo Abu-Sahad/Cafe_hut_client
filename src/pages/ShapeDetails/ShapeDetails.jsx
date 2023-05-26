@@ -4,10 +4,8 @@ import ShapeDetail from "../ShapeDetail/ShapeDetail";
 
 const ShapeDetails = () => {
     const [categories, setCategories] = useState([]);
-    console.log(categories)
-
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/chefCategories')
+        fetch('https://chef-hut-abu-sahad.vercel.app/chefCategories')
             .then(res => res.json())
             .then(data => setCategories(data))
         // .catch(error => console.error(error))

@@ -35,7 +35,7 @@ const Header = () => {
                 style={{
                   color: "black",
                   textDecoration: "none",
-                  marginRight: "20px",
+                  marginRight: "35px",
                 }}
                 to="/"
               >

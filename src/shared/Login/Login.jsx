@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
-import { Link, useLocation, useNavigate} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provides/AuthProviders";
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn, googleSignIn, gitSignIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
-    console.log('login page location', location)
-    const from = location.state?.from?.pathname ||'/'
+    //console.log('login page location', location)
+    const from = location.state?.from?.pathname || '/'
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -23,6 +23,25 @@ const Login = () => {
                 console.log(error);
             })
     };
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(() => {
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+    };
+    const handleGitSignIn = () => {
+        gitSignIn()
+            .then(() => {
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+    }
+
 
     return (
         <Container>
@@ -75,11 +94,11 @@ const Login = () => {
                                             <p className="text-center fw-bold mx-3 mb-0">OR</p>
                                         </div>
 
-                                        <Button className="mb-4 w-100" size="lg" style={{ backgroundColor: '#3b5998' }}>
+                                        <Button onClick={handleGoogleSignIn} className="mb-4 w-100" size="lg" style={{ backgroundColor: '#3b5998' }}>
                                             Continue with Google
                                         </Button>
 
-                                        <Button className="mb-4 w-100" size="lg" style={{ backgroundColor: '#55acee' }}>
+                                        <Button onClick={handleGitSignIn} className="mb-4 w-100" size="lg" style={{ backgroundColor: '#55acee' }}>
                                             Continue with Github
                                         </Button>
                                     </div>
