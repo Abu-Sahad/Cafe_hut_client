@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provides/AuthProviders";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
-    const { user, createUser, updateProfile1 } = useContext(AuthContext)
+    const { user, createUser, updateProfile1 } = useContext(AuthContext);
+    const [error, setError] = useState("");
+
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -12,26 +16,40 @@ const Registration = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo, email, password);
+        // Validation
+        if (!name || !photo || !email || !password) {
+            setError("Please fill in all fields.");
+            return;
+        }
+
+        if (password.length < 6) {
+            setError("Password should be at least 6 characters long.");
+            return;
+        }
+
+        if (!email || !password) {
+            setError("Please enter both email and password.");
+            return;
+        }
 
         createUser(email, password)
-            .then(result => {
+            .then((result) => {
                 updateProfile1(name, photo)
                     .then(() => {
-                        console.log("Profile updated successfully");
+                        toast.success("Profile updated successfully");
                     })
                     .catch((error) => {
-                        console.error("Error updating profile:", error);
+                        setError("Error updating profile:", error);
                     });
 
-                const loggedUser = result.user
-                console.log(loggedUser)
+                const loggedUser = result.user;
                 form.reset();
             })
-            .catch(error => {
-                console.log(error.message)
-            })
+            .catch((error) => {
+                setError(error.message);
+            });
     };
+
     return (
         <Container>
             <Row className="vh-100 d-flex justify-content-center align-items-center">
@@ -45,9 +63,7 @@ const Registration = () => {
                                 <div className="mb-3">
                                     <Form onSubmit={handleRegister}>
                                         <Form.Group className="mb-3" controlId="formBasicName">
-                                            <Form.Label className="text-center">
-                                                Name
-                                            </Form.Label>
+                                            <Form.Label className="text-center">Name</Form.Label>
                                             <Form.Control
                                                 type="text"
                                                 name="name"
@@ -55,9 +71,7 @@ const Registration = () => {
                                             />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicPhoto">
-                                            <Form.Label className="text-center">
-                                                Photo Url
-                                            </Form.Label>
+                                            <Form.Label className="text-center">Photo Url</Form.Label>
                                             <Form.Control
                                                 type="text"
                                                 name="photo"
@@ -65,9 +79,7 @@ const Registration = () => {
                                             />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Label className="text-center">
-                                                Email address
-                                            </Form.Label>
+                                            <Form.Label className="text-center">Email address</Form.Label>
                                             <Form.Control
                                                 type="email"
                                                 name="email"
@@ -75,10 +87,7 @@ const Registration = () => {
                                             />
                                         </Form.Group>
 
-                                        <Form.Group
-                                            className="mb-3"
-                                            controlId="formBasicPassword"
-                                        >
+                                        <Form.Group className="mb-3" controlId="formBasicPassword">
                                             <Form.Label>Password</Form.Label>
                                             <Form.Control
                                                 type="password"
@@ -87,16 +96,18 @@ const Registration = () => {
                                             />
                                         </Form.Group>
 
+                                        {error && <div className="text-danger mb-3">{error}</div>}
+
                                         <div className="d-grid">
                                             <Button variant="primary" type="submit">
-                                                Login
+                                                Register
                                             </Button>
                                         </div>
                                     </Form>
 
                                     <div className="mt-3">
                                         <p className="mb-0  text-center">
-                                            Al ready have an account?{" "}
+                                            Already have an account?{" "}
                                             <Link to="/login">Login</Link>
                                         </p>
                                     </div>
@@ -106,6 +117,7 @@ const Registration = () => {
                     </Card>
                 </Col>
             </Row>
+            <ToastContainer />
         </Container>
     );
 };

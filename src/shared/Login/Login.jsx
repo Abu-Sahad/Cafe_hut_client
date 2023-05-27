@@ -1,28 +1,35 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provides/AuthProviders";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
-    const { signIn, googleSignIn, gitSignIn } = useContext(AuthContext)
+    const { signIn, googleSignIn, gitSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    //console.log('login page location', location)
-    const from = location.state?.from?.pathname || '/'
+    const [error, setError] = useState("");
+
+    const from = location.state?.from?.pathname || "/";
+
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+
         signIn(email, password)
-            .then(result => {
+            .then((result) => {
                 const loggedUser = result.user;
-                navigate(from, { replace: true })
+                navigate(from, { replace: true });
             })
-            .catch(error => {
-                console.log(error);
-            })
+            .catch((error) => {
+                setError(error.message);
+                toast.error(error.message);
+            });
     };
+
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(() => {
@@ -32,6 +39,7 @@ const Login = () => {
                 console.log(error.message);
             });
     };
+
     const handleGitSignIn = () => {
         gitSignIn()
             .then(() => {
@@ -40,8 +48,7 @@ const Login = () => {
             .catch((error) => {
                 console.log(error.message);
             });
-    }
-
+    };
 
     return (
         <Container>
@@ -78,6 +85,10 @@ const Login = () => {
                                             />
                                         </Form.Group>
 
+                                        {error && (
+                                            <div className="text-danger mb-3">{error}</div>
+                                        )}
+
                                         <div className="d-grid">
                                             <Button variant="primary" type="submit">
                                                 Login
@@ -94,11 +105,21 @@ const Login = () => {
                                             <p className="text-center fw-bold mx-3 mb-0">OR</p>
                                         </div>
 
-                                        <Button onClick={handleGoogleSignIn} className="mb-4 w-100" size="lg" style={{ backgroundColor: '#3b5998' }}>
+                                        <Button
+                                            onClick={handleGoogleSignIn}
+                                            className="mb-4 w-100"
+                                            size="lg"
+                                            style={{ backgroundColor: "#3b5998" }}
+                                        >
                                             Continue with Google
                                         </Button>
 
-                                        <Button onClick={handleGitSignIn} className="mb-4 w-100" size="lg" style={{ backgroundColor: '#55acee' }}>
+                                        <Button
+                                            onClick={handleGitSignIn}
+                                            className="mb-4 w-100"
+                                            size="lg"
+                                            style={{ backgroundColor: "#55acee" }}
+                                        >
                                             Continue with Github
                                         </Button>
                                     </div>
@@ -108,6 +129,7 @@ const Login = () => {
                     </Card>
                 </Col>
             </Row>
+            <ToastContainer />
         </Container>
     );
 };
