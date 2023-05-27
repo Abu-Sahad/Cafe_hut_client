@@ -13,6 +13,8 @@ import Registration from './shared/Registration/Registration';
 import ChefDetailsLayout from './Layout/ChefDetailsLayout';
 import SingleChefDetails from './pages/SingleChefDeatils/SingleChefDetails';
 import AuthProviders from './Provides/AuthProviders';
+import Blog from './pages/Blog/Blog';
+import NotFound from './pages/NotFound/NotFound';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Registration></Registration>
+      },
+      {
+        path: '/blog',
+        element: <Blog></Blog>
+      },
+      {
+        path: '*',
+        element: <NotFound></NotFound>
       }
     ],
   },
