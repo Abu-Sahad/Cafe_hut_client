@@ -39,11 +39,12 @@ const Registration = () => {
                         toast.success("Profile updated successfully");
                     })
                     .catch((error) => {
-                        setError("Error updating profile:", error);
+                        setError(error);
                     });
 
                 const loggedUser = result.user;
                 form.reset();
+                window.location.href = "/";
             })
             .catch((error) => {
                 setError(error.message);

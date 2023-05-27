@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provides/AuthProviders";
 import './Header.css'
 const Header = () => {
@@ -31,22 +31,24 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
-              <Link
+              <NavLink
                 style={{
                   color: "black",
                   textDecoration: "none",
                   marginRight: "35px",
                 }}
                 to="/"
+                activeClassName="active"
               >
                 Home
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 style={{ color: "black", textDecoration: "none" }}
                 to="/blog"
+                activeClassName="active"
               >
                 Blog
-              </Link>
+              </NavLink>
             </Nav>
             <Nav>
               {user ? (
@@ -99,12 +101,13 @@ const Header = () => {
                   </Button>
                 </>
               ) : (
-                <Link
+                <NavLink
                   style={{ color: "black", textDecoration: "none" }}
                   to="/login"
+                  activeClassName="active"
                 >
                   LogIn
-                </Link>
+                </NavLink>
               )}
             </Nav>
           </Navbar.Collapse>
