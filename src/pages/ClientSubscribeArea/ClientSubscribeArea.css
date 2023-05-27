@@ -1,0 +1,16 @@
+.client-content {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: cornsilk;
+    padding: 30px 0px;
+}
+
+.client-content-button {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(203, 244, 230);
+    border: none;
+}
