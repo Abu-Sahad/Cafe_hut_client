@@ -1,8 +1,34 @@
+import { useRef, useState } from "react";
+//import { useReactToPdf } from "react-to-pdf";
+//import { useReactToPdf } from "@mikecousins/react-to-pdf";
 import { Card, Col, Row } from "react-bootstrap";
 
 const Blog = () => {
+    // const [isPdfGenerated, setIsPdfGenerated] = useState(false);
+    // const pdfRef = useRef(null);
+    // const { saveAsPdf } = useReactToPdf({
+    //     fileName: "blog.pdf",
+    //     orientation: "portrait",
+    //     onComplete: () => setIsPdfGenerated(true),
+    // });
+
+    // const handlePdfClick = () => {
+    //     saveAsPdf(pdfRef.current);
+    // };
+
     return (
         <div className="container">
+            <div>
+                <h1 className="text-center">Blog Page</h1>
+                <p className="text-center">It contains some information about the blog page.</p>
+                {/* <button onClick={handlePdfClick}>Generate PDF</button>
+                {isPdfGenerated && (
+                    <a href="blog.pdf" download>
+                        Download PDF
+                    </a>
+                )} */}
+            </div>
+            {/* <div ref={pdfRef}> */}
             <Row xs={1} md={2} className="g-4">
                 <Col>
                     <Card>
@@ -65,6 +91,7 @@ const Blog = () => {
 
 
             </Row>
+            {/* </div> */}
         </div>
     );
 };

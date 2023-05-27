@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provides/AuthProviders";
-
+import './Header.css'
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, photoURL } = useContext(AuthContext);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleLogOut = () => {
@@ -22,8 +22,8 @@ const Header = () => {
   };
 
   return (
-    <div className="container">
-      <Navbar collapseOnSelect expand="lg" bg="white" variant="white">
+    <div>
+      <Navbar collapseOnSelect expand="lg" className="header-content" variant="white">
         <Container>
           <Navbar.Brand className="fw-bold mb-2 text-uppercase" href="/">
             Chef Hut
@@ -71,7 +71,7 @@ const Header = () => {
                       onMouseLeave={handleMouseLeave}
                     >
                       <img
-                        src={user.photoUrl}
+                        src={user.photoURL}
                         alt="User"
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />

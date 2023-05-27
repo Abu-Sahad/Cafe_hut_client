@@ -1,4 +1,5 @@
 import { Button, Card, Col } from "react-bootstrap";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 const ShapeDetail = ({ category }) => {
@@ -7,7 +8,9 @@ const ShapeDetail = ({ category }) => {
         <div>
             <Col>
                 <Card className="shadow-lg p-3 mb-5 bg-white rounded">
-                    <Card.Img className="rounded" style={{ height: '200px' }} variant="top" src={category.chef_picture} />
+                    <LazyLoad height={200} offset={100} placeholder={<Card.Img className="rounded" style={{ height: '200px' }} variant="top" />} >
+                        <Card.Img className="rounded" style={{ height: '200px' }} variant="top" src={category.chef_picture} />
+                    </LazyLoad>
                     <Card.Body>
                         <Card.Title>Chef Name: {category.chef_name}</Card.Title>
                         <Card.Text> Experience: {category.years_of_experience}</Card.Text>

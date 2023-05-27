@@ -20,7 +20,7 @@ const Footer = () => {
                     <hr className="clearfix w-100 d-md-none pb-0" />
 
                     <div className="col-md-3 mb-md-0 mb-3">
-                        <h5 className="text-uppercase">Links</h5>
+                        <h5 className="text-uppercase text-white">Information</h5>
                         <ul className="list-unstyled">
                             <li><Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Home</Link></li>
                             <li><Link to="/blog" style={{ textDecoration: 'none', color: 'white' }}>Blog</Link></li>
