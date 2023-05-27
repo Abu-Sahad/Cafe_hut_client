@@ -15,6 +15,7 @@ import SingleChefDetails from './pages/SingleChefDeatils/SingleChefDetails';
 import AuthProviders from './Provides/AuthProviders';
 import Blog from './pages/Blog/Blog';
 import NotFound from './pages/NotFound/NotFound';
+import PrivateRoutes from './shared/PrivateRoutes/PrivateRoutes';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: ':id',
-        element: <SingleChefDetails></SingleChefDetails>,
+        element: <PrivateRoutes><SingleChefDetails></SingleChefDetails></PrivateRoutes>,
         loader: ({ params }) => fetch(`https://chef-hut-abu-sahad.vercel.app/chefCategories/${params.id}`)
       }
     ]
